@@ -5,9 +5,9 @@ const Signup = () => {
     <main>
         <section></section>
         <form>
-            <h1>Scale Swcure</h1>
+            <h1>Scale Secure</h1>
             <div>
-                <h2>sign up</h2>
+                <h2>Sign Up</h2>
                 <div>
                     <label htmlFor="">Email</label>
                     <input type="email" name="" id="" />
@@ -18,7 +18,7 @@ const Signup = () => {
                     <img src="" alt="" />
                     <img src="" alt="" />
                 </div>
-                <small>Already have an account? <a href=""></a></small>
+                <small>Already have an account? <a href="">Sign in</a></small>
             </div>
         </form>
     </main>
