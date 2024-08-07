@@ -1,12 +1,12 @@
 import React from 'react'
-import Signup from './Signup'
-import Main from './Main'
+import Signup from './components/Signup'
+import Main from './components/Main'
 
 const App = () => {
   return (
     <div>
-      {/* <Signup /> */}
-      <Main />
+      <Signup />
+      {/* <Main /> */}
     </div>
   )
 }
