@@ -7,6 +7,7 @@ import Header from './components/Header'
 import Desktop1 from './components/Desktop1'
 import Desktop2 from './components/Desktop2'
 import Missing from './components/Missing'
+// import Output from './components/Output'
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/desktop1' element={<Desktop1 />}/>
         <Route path='/desktop2' element={<Desktop2 />}/>
         <Route path='*' element={<Missing />}/>
+        {/* <Route path='/' element={<Output />} /> */}
       </Routes>
     </div>
   )

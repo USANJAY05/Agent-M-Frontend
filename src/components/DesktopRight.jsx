@@ -15,6 +15,7 @@ const DesktopRight = () => {
         {/* <AgentMRight /> */}
         <Desktop1 />
         {rightSearch?<SearchSection rightSearch={rightSearch} setRightSearch={setRightSearch} />:""}
+        
     </section>
   )
 }

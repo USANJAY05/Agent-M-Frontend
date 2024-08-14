@@ -3,7 +3,7 @@ import Priority from '../assets/icons/toDo.svg'
 const Agent = ({right,setRight}) => {
   return (
     <div className='flex flex-col'>
-        <div className='bg-blue overflow-auto'>
+        <div className='bg-blue overflow-aut'>
             
             <div className={right==='Priority Action Items'?'bg-blue-500 flex p-2 justify-between rounded-md':'p-2 flex justify-between hover:bg-blue-500 border-inherit rounded-md'}>
                 <button>Priority Action Items</button>
@@ -31,7 +31,7 @@ const Agent = ({right,setRight}) => {
                 <button>Pending documents</button>
             </div>
         </div>
-        <div className='bg-blue-500 p-2 px-14 rounded text-center fixed bottom-4'>
+        <div className='bg-blue-500 p-2 px-14 rounded text-center absolute bottom-6'>
             <button className=''>Start a New Chart</button>
         </div>
 
