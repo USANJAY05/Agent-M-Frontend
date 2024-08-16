@@ -2,11 +2,11 @@ import React from 'react'
 import agent from '../assets/icons/agent_po_headshot.png'
 import sendBtn from '../assets/icons/sendBtn.svg'
 
-const Desktop1 = () => {
+const Desktop1 = ({input,setInput}) => {
   return (
     <section className='p-12 h-screen w-full flex flex-col items-center dark:bg-slate-950'>
-        <div className='h-full'>
-            <div className='flex gap-2'>
+        <div className='p-3 h-full w-full overflow-auto gap-9 flex flex-col'>
+            <div className='flex justify-center gap-2'>
                 <img src={agent} className='w-6 h-6' alt="" />
                 <div className='leading-9'>
                     <h2 className='font-bold text-black text-xl dark:text-white'>Agent-M <mark className='text-gray-300 bg-inherit text-sm font-medium'>Just now</mark></h2>
@@ -18,9 +18,16 @@ const Desktop1 = () => {
                     </div>
                 </div>
             </div>
+        
         </div>
         <div className='w-full relative'>
-            <input className='border w-full outline-none text-lg px-6 py-3 rounded dark:bg-inherit dark:text-white' placeholder='Your message here' type="text" />
+            <input 
+                className='border w-full outline-none text-lg px-6 py-3 rounded dark:bg-inherit dark:text-white' 
+                placeholder='Your message here' 
+                type="text"
+                onChange={(e)=>setInput(e.target.value)}
+                value={input}
+            />
             <button>
                 <img src={sendBtn} alt="" className='absolute right-6 top-4' />
             </button>

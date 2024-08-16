@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
-import Toast from './Toast'; // Import the Toast component
 
-const Signup = () => {
-    const [showToast, setShowToast] = useState(false);
-    const [userName, setUserName] = useState('');
+import { useMsal } from '@azure/msal-react';
+import { loginRequest } from '../authConfig';
+
+
+const Signup = ({setEmail,setName,name,setShowToast,setPicture}) => {
     const navigate = useNavigate(); // Initialize useNavigate
 
     const login = useGoogleLogin({
@@ -17,16 +17,27 @@ const Signup = () => {
                         Authorization: `Bearer ${response.access_token}`,
                     },
                 });
-                const { name } = res.data;
-                setUserName(name);
+                const { name , picture , email } = res.data;
+                console.log(res.data)
+                setName(name);
+                setEmail(email)
+                setPicture(picture)
                 setShowToast(true);
                 navigate('/desktop2'); // Use navigate instead of Navigate
-                setTimeout(() => setShowToast(false), 5000); // Hide the toast after 5 seconds
             } catch (error) {
                 console.log(error);
             }
         },
     });
+
+
+    const { instance } = useMsal();
+
+    const handleMSLogin = () => {
+      instance.loginPopup(loginRequest).catch((error) => {
+        console.error(error);
+      });
+    };
 
     return (
         <section className='grid grid-cols-2 h-screen'>
@@ -52,16 +63,14 @@ const Signup = () => {
                             <button onClick={() => login()}>
                                 <img className='w-8' src="https://imgs.search.brave.com/Nv4129r-xJgP8ve9P-rlAy7BHaff8OoRyN1D5jdCcVg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMtMDAuaWNvbmR1/Y2suY29tL2Fzc2V0/cy4wMC9nb29nbGUt/aWNvbi0yNTZ4MjU2/LWhxeGh1N2o3LnBu/Zw" alt="Google icon" />
                             </button>
-                            <a href="#">
+                            <button onClick={()=>handleMSLogin()}>
                                 <img className='w-8' src="https://imgs.search.brave.com/lZtSHU0xcSaZfNN6zHo9A4aLmiNBnFIEpmjesp6VYeA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wbmdp/bWcuY29tL3VwbG9h/ZHMvbWljcm9zb2Z0/L21pY3Jvc29mdF9Q/TkcxMy5wbmc" alt="Microsoft icon" />
-                            </a>
+                            </button>
                         </div>
                         <small className='text-center'>Already have an account? <Link to={'/login'} className='underline'>Sign in</Link></small>
                     </div>
                 </div>
             </section>
-
-            {showToast && <Toast message={`Hi ${userName}!`} />} 
         </section>
     );
 };

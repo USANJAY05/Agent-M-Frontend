@@ -4,15 +4,22 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { msalConfig } from './authConfig';
+import { PublicClientApplication } from '@azure/msal-browser';
+import { MsalProvider } from '@azure/msal-react';
 
+
+const msalInstance = new PublicClientApplication(msalConfig);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+  <MsalProvider instance={msalInstance}>
     <GoogleOAuthProvider clientId="838740252472-m11j8dru315ffsraqqfqao59fhdu1bc1.apps.googleusercontent.com">
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </GoogleOAuthProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </GoogleOAuthProvider>
+  </MsalProvider>
   </React.StrictMode>
 );
 

@@ -2,8 +2,8 @@ import React from 'react'
 import Priority from '../assets/icons/toDo.svg'
 const Agent = ({right,setRight}) => {
   return (
-    <div className='flex flex-col'>
-        <div className='bg-blue overflow-aut'>
+    <div className='h-full flex flex-col overflow-auto'>
+        <div className='flex flex-col overflow-auto px-3 h-full'>
             
             <div className={right==='Priority Action Items'?'bg-blue-500 flex p-2 justify-between rounded-md':'p-2 flex justify-between hover:bg-blue-500 border-inherit rounded-md'}>
                 <button>Priority Action Items</button>
@@ -24,15 +24,15 @@ const Agent = ({right,setRight}) => {
             <div className='p-2 flex justify-between hover:bg-blue-500 rounded-md'>
                 <button>Pending documents</button>
             </div>
-            <div className='p-2 flex justify-between hover:bg-blue-500 rounded-md'>
+            {/* <div className='p-2 flex justify-between hover:bg-blue-500 rounded-md'>
                 <button>Pending documents</button>
             </div>
             <div className='p-2 flex justify-between hover:bg-blue-500 rounded-md'>
                 <button>Pending documents</button>
-            </div>
+            </div> */}
         </div>
-        <div className='bg-blue-500 p-2 px-14 rounded text-center absolute bottom-6'>
-            <button className=''>Start a New Chart</button>
+        <div className=' w-full text-center p-4'>
+            <button className='bg-blue-500 py-3 rounded w-full hover:bg-blue-600'>Start a New Chart</button>
         </div>
 
     </div>
